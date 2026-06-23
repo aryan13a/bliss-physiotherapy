@@ -628,29 +628,5 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // --- 13. Contact Quick Message Form ---
-  const contactQuickForm = document.getElementById('contact-quick-form');
-  const contactSuccess = document.getElementById('contact-form-success');
-  
-  if (contactQuickForm && contactSuccess) {
-    contactQuickForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      
-      const submitBtn = contactQuickForm.querySelector('button[type="submit"]');
-      submitBtn.disabled = true;
-      submitBtn.innerHTML = 'Sending...';
-      
-      setTimeout(() => {
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = 'Send Message <i class="lucide-send"></i>';
-        
-        contactQuickForm.reset();
-        contactSuccess.classList.remove('hidden');
-        
-        setTimeout(() => {
-          contactSuccess.classList.add('hidden');
-        }, 5000);
-      }, 1000);
-    });
-  }
+
 });
