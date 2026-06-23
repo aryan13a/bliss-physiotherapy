@@ -268,7 +268,7 @@
             <li>Pelvic organ prolapse therapy</li>
             <li>Chronic pelvic pain relief</li>
           </ul>
-          <a href="#book-appointment" class="card-cta">Book Consultation <i data-lucide="arrow-right"></i></a>
+          <a href="#book-appointment" class="card-cta" data-service="Women's Health & Pelvic Floor">Book Consultation <i data-lucide="arrow-right"></i></a>
         </div>
 
         <!-- Card 2: Prenatal & Postnatal Care -->
@@ -281,7 +281,7 @@
             <li>Diastasis Recti (ab separation) correction</li>
             <li>Safe prenatal exercise prescription</li>
           </ul>
-          <a href="#book-appointment" class="card-cta">Book Consultation <i data-lucide="arrow-right"></i></a>
+          <a href="#book-appointment" class="card-cta" data-service="Women's Health & Pelvic Floor">Book Consultation <i data-lucide="arrow-right"></i></a>
         </div>
 
         <!-- Card 3: Spinal Therapy -->
@@ -294,7 +294,7 @@
             <li>Cervical neck pain therapy</li>
             <li>Postural retraining & ergonomics</li>
           </ul>
-          <a href="#book-appointment" class="card-cta">Book Consultation <i data-lucide="arrow-right"></i></a>
+          <a href="#book-appointment" class="card-cta" data-service="Spine & Posture Rehab">Book Consultation <i data-lucide="arrow-right"></i></a>
         </div>
 
         <!-- Card 4: Joint Pain Management -->
@@ -307,7 +307,7 @@
             <li>Frozen shoulder manipulation</li>
             <li>Rheumatoid arthritis support</li>
           </ul>
-          <a href="#book-appointment" class="card-cta">Book Consultation <i data-lucide="arrow-right"></i></a>
+          <a href="#book-appointment" class="card-cta" data-service="Orthopedic Pain (Knee, Shoulder)">Book Consultation <i data-lucide="arrow-right"></i></a>
         </div>
 
         <!-- Card 5: Sports Injury Rehabilitation -->
@@ -320,7 +320,7 @@
             <li>Ankle sprains & muscle tears</li>
             <li>Athletic movement analysis</li>
           </ul>
-          <a href="#book-appointment" class="card-cta">Book Consultation <i data-lucide="arrow-right"></i></a>
+          <a href="#book-appointment" class="card-cta" data-service="Sports Injuries & Post-Surgery">Book Consultation <i data-lucide="arrow-right"></i></a>
         </div>
 
         <!-- Card 6: Post-Surgical Rehab -->
@@ -333,7 +333,7 @@
             <li>Post-fracture stiffness release</li>
             <li>Scar tissue mobilization</li>
           </ul>
-          <a href="#book-appointment" class="card-cta">Book Consultation <i data-lucide="arrow-right"></i></a>
+          <a href="#book-appointment" class="card-cta" data-service="Sports Injuries & Post-Surgery">Book Consultation <i data-lucide="arrow-right"></i></a>
         </div>
 
         <!-- Card 7: Dry Needling -->
@@ -346,7 +346,7 @@
             <li>Myofascial pain syndromes</li>
             <li>Enhanced blood circulation</li>
           </ul>
-          <a href="#book-appointment" class="card-cta">Book Consultation <i data-lucide="arrow-right"></i></a>
+          <a href="#book-appointment" class="card-cta" data-service="Dry Needling / Manual Therapy">Book Consultation <i data-lucide="arrow-right"></i></a>
         </div>
 
         <!-- Card 8: Electrotherapy & Modalities -->
@@ -359,7 +359,7 @@
             <li>Therapeutic Ultrasound healing</li>
             <li>Neuromuscular stimulation (EMS)</li>
           </ul>
-          <a href="#book-appointment" class="card-cta">Book Consultation <i data-lucide="arrow-right"></i></a>
+          <a href="#book-appointment" class="card-cta" data-service="Dry Needling / Manual Therapy">Book Consultation <i data-lucide="arrow-right"></i></a>
         </div>
 
       </div>
@@ -480,7 +480,7 @@
             <img src="assets/dr_richa_sharma.jpg" alt="Dr. Richa Sharma (PT) - Bliss Physiotherapy Jaipur" class="team-img">
             <div class="team-overlay-contacts">
               <a href="tel:+917828064351" class="team-social-btn" title="Call Doctor"><i data-lucide="phone"></i></a>
-              <a href="#book-appointment" class="team-social-btn" title="Book Calendar"><i data-lucide="calendar"></i></a>
+              <a href="#book-appointment" class="team-social-btn" title="Book Calendar" data-doctor="Dr. Richa Sharma (PT)"><i data-lucide="calendar"></i></a>
             </div>
           </div>
           <div class="team-info">
@@ -504,7 +504,7 @@
             <img src="assets/dr_amit_verma.jpg" alt="Dr. Amit Verma (PT) - Senior Physiotherapist" class="team-img">
             <div class="team-overlay-contacts">
               <a href="tel:+917828064351" class="team-social-btn" title="Call Doctor"><i data-lucide="phone"></i></a>
-              <a href="#book-appointment" class="team-social-btn" title="Book Calendar"><i data-lucide="calendar"></i></a>
+              <a href="#book-appointment" class="team-social-btn" title="Book Calendar" data-doctor="Dr. Amit Verma (PT)"><i data-lucide="calendar"></i></a>
             </div>
           </div>
           <div class="team-info">
@@ -536,7 +536,7 @@
           <span class="sub-title light">Priority Access</span>
           <h2>Ready to Begin Your Recovery Journey?</h2>
           <p class="booking-text">
-            Schedule your comprehensive assessment with our specialists today. Fill out our simple booking request form, and our coordinator will confirm your exact slot via SMS/Call within 60 minutes.
+            Schedule your comprehensive assessment with our specialists today. Select your details to start a quick assessment via WhatsApp, and our coordinator will confirm your custom slot instantly.
           </p>
           
           <div class="appointment-highlights">
@@ -573,128 +573,53 @@
         <!-- Booking Form Side -->
         <div class="booking-form-panel" id="booking-card-container">
           <div class="form-title-wrapper">
-            <h3>Schedule Assessment</h3>
-            <p>Please enter details to check real-time availability.</p>
+            <h3>WhatsApp Assessment</h3>
+            <p>Customize your appointment details to chat with us on WhatsApp.</p>
           </div>
           
-          <form id="appointment-form" novalidate>
+          <form id="whatsapp-booking-form">
             <div class="form-row">
               <div class="form-group">
-                <label for="patient-name">Patient's Full Name <span class="required">*</span></label>
-                <input type="text" id="patient-name" name="name" required placeholder="Enter full name" aria-required="true">
-                <span class="error-msg" id="err-name">Name is required</span>
+                <label for="wa-patient-name">Patient's Full Name <span class="required">*</span></label>
+                <input type="text" id="wa-patient-name" name="name" required placeholder="Enter full name" aria-required="true">
+                <span class="error-msg" id="err-wa-name">Name is required</span>
               </div>
             </div>
 
             <div class="form-row split">
               <div class="form-group">
-                <label for="patient-phone">Phone Number <span class="required">*</span></label>
-                <input type="tel" id="patient-phone" name="phone" required placeholder="10-digit number" aria-required="true">
-                <span class="error-msg" id="err-phone">Valid phone number is required</span>
-              </div>
-              <div class="form-group">
-                <label for="patient-email">Email Address</label>
-                <input type="email" id="patient-email" name="email" placeholder="example@gmail.com">
-                <span class="error-msg" id="err-email">Enter a valid email address</span>
-              </div>
-            </div>
-
-            <div class="form-row split">
-              <div class="form-group">
-                <label for="physio-service">Specialty Required <span class="required">*</span></label>
-                <select id="physio-service" name="service" required aria-required="true">
+                <label for="wa-physio-service">Specialty Required <span class="required">*</span></label>
+                <select id="wa-physio-service" name="service" required aria-required="true">
                   <option value="" disabled selected>Select specialty</option>
-                  <option value="womens-health">Women's Health & Pelvic Floor</option>
-                  <option value="spine">Spine & Posture Rehab</option>
-                  <option value="orthopedics">Orthopedic Pain (Knee, Shoulder)</option>
-                  <option value="sports">Sports Injuries & Post-Surgery</option>
-                  <option value="dry-needling">Dry Needling / Manual Therapy</option>
+                  <option value="Women's Health & Pelvic Floor">Women's Health & Pelvic Floor</option>
+                  <option value="Spine & Posture Rehab">Spine & Posture Rehab</option>
+                  <option value="Orthopedic Pain (Knee, Shoulder)">Orthopedic Pain (Knee, Shoulder)</option>
+                  <option value="Sports Injuries & Post-Surgery">Sports Injuries & Post-Surgery</option>
+                  <option value="Dry Needling / Manual Therapy">Dry Needling / Manual Therapy</option>
                 </select>
-                <span class="error-msg" id="err-service">Please select a service</span>
+                <span class="error-msg" id="err-wa-service">Please select a specialty</span>
               </div>
               <div class="form-group">
-                <label for="physio-doctor">Preferred Specialist</label>
-                <select id="physio-doctor" name="doctor">
-                  <option value="any">First Available Therapist</option>
-                  <option value="dr-richa">Dr. Richa Sharma (PT) (Women's Health)</option>
-                  <option value="dr-amit">Dr. Amit Verma (PT) (Sports & Ortho)</option>
+                <label for="wa-physio-doctor">Preferred Specialist</label>
+                <select id="wa-physio-doctor" name="doctor">
+                  <option value="First Available Therapist" selected>First Available Therapist</option>
+                  <option value="Dr. Richa Sharma (PT)">Dr. Richa Sharma (PT)</option>
+                  <option value="Dr. Amit Verma (PT)">Dr. Amit Verma (PT)</option>
                 </select>
-              </div>
-            </div>
-
-            <div class="form-row split">
-              <div class="form-group">
-                <label for="appointment-date">Preferred Date <span class="required">*</span></label>
-                <input type="date" id="appointment-date" name="date" required aria-required="true">
-                <span class="error-msg" id="err-date">Select a date in the future</span>
-              </div>
-              <div class="form-group">
-                <label for="appointment-time">Preferred Time Slot <span class="required">*</span></label>
-                <select id="appointment-time" name="time" required aria-required="true">
-                  <option value="" disabled selected>Choose a slot</option>
-                  <option value="morning-1">10:00 AM - 12:00 PM</option>
-                  <option value="morning-2">12:00 PM - 02:00 PM</option>
-                  <option value="afternoon">02:00 PM - 04:00 PM</option>
-                  <option value="evening-1">04:00 PM - 06:00 PM</option>
-                  <option value="evening-2">06:00 PM - 08:00 PM</option>
-                </select>
-                <span class="error-msg" id="err-time">Please select a time slot</span>
               </div>
             </div>
 
             <div class="form-group">
-              <label for="patient-notes">Briefly describe your symptoms / goals</label>
-              <textarea id="patient-notes" name="notes" placeholder="e.g. Back pain for 3 weeks, Post-surgery rehab requirements..." rows="3"></textarea>
+              <label for="wa-patient-notes">Describe your symptoms (Optional)</label>
+              <textarea id="wa-patient-notes" name="notes" placeholder="e.g. Back pain for 3 weeks, knee stiffness post-workout..." rows="3"></textarea>
             </div>
 
-            <div class="form-checkbox">
-              <input type="checkbox" id="terms" required checked aria-required="true">
-              <label for="terms">I consent to receiving slot booking alerts on the number provided. *</label>
-              <span class="error-msg" id="err-terms">Consent required to book online</span>
-            </div>
-
-            <button type="submit" class="btn btn-primary btn-full-width btn-submit ripple">
-              <span class="btn-text">Confirm Booking Request</span>
-              <span class="spinner hidden"></span>
+            <button type="submit" class="btn btn-primary btn-full-width btn-submit ripple" style="background-color: #25d366; border-color: #25d366;">
+              <span class="btn-text" style="display: flex; align-items: center; justify-content: center; gap: 8px;">
+                <i data-lucide="message-circle"></i> Start Booking on WhatsApp
+              </span>
             </button>
           </form>
-          
-          <!-- Booking Success Screen (Initial hidden state) -->
-          <div class="booking-success-screen hidden" id="booking-success-view">
-            <div class="success-icon-wrapper">
-              <i data-lucide="check-circle"></i>
-            </div>
-            <h3>Request Received!</h3>
-            <p>We have reserved a pending slot for you. A clinical coordinator will verify details and text confirmation shortly.</p>
-            
-            <div class="appointment-summary-card">
-              <h4>Appointment Preview</h4>
-              <div class="summary-details">
-                <div class="detail-row">
-                  <span class="lbl">Patient:</span>
-                  <strong id="summary-name">Gayatri Sharma</strong>
-                </div>
-                <div class="detail-row">
-                  <span class="lbl">Date & Time:</span>
-                  <strong id="summary-datetime">Wed, Jun 24 | 10:00 AM</strong>
-                </div>
-                <div class="detail-row">
-                  <span class="lbl">Physiotherapist:</span>
-                  <strong id="summary-doctor">Dr. Richa Sharma (PT)</strong>
-                </div>
-                <div class="detail-row">
-                  <span class="lbl">Appointment ID:</span>
-                  <span class="app-id" id="summary-id">BLISS-8942-A</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="success-actions">
-              <button class="btn btn-primary btn-sm btn-full-width" id="calendar-btn"><i data-lucide="calendar-plus"></i> Save to Calendar</button>
-              <button class="btn btn-secondary btn-sm btn-full-width" id="new-booking-btn">Book Another Session</button>
-            </div>
-          </div>
-
         </div>
 
       </div>

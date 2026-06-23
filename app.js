@@ -231,150 +231,78 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // --- 6. Appointment Booking Engine Validation & Flow ---
-  const bookingForm = document.getElementById('appointment-form');
-  const bookingSuccessView = document.getElementById('booking-success-view');
-  const bookingContainer = document.getElementById('booking-card-container');
-  
-  // Set minimum date picker values to today
-  const dateInput = document.getElementById('appointment-date');
-  if (dateInput) {
-    const today = new Date();
-    const yyyy = today.getFullYear();
-    let mm = today.getMonth() + 1;
-    let dd = today.getDate();
-    if (dd < 10) dd = '0' + dd;
-    if (mm < 10) mm = '0' + mm;
-    const formattedToday = `${yyyy}-${mm}-${dd}`;
-    dateInput.setAttribute('min', formattedToday);
-  }
-  
-  if (bookingForm) {
-    bookingForm.addEventListener('submit', (e) => {
+  // --- 6. WhatsApp Appointment Booking ---
+  const waBookingForm = document.getElementById('whatsapp-booking-form');
+  if (waBookingForm) {
+    waBookingForm.addEventListener('submit', (e) => {
       e.preventDefault();
       
-      let isValid = true;
+      const name = document.getElementById('wa-patient-name');
+      const service = document.getElementById('wa-physio-service');
+      const doctor = document.getElementById('wa-physio-doctor');
+      const notes = document.getElementById('wa-patient-notes');
       
-      // Simple custom validation
-      const name = document.getElementById('patient-name');
-      const phone = document.getElementById('patient-phone');
-      const email = document.getElementById('patient-email');
-      const service = document.getElementById('physio-service');
-      const date = document.getElementById('appointment-date');
-      const time = document.getElementById('appointment-time');
-      const terms = document.getElementById('terms');
+      let isValid = true;
       
       // Reset errors
       document.querySelectorAll('.error-msg').forEach(el => el.style.display = 'none');
       document.querySelectorAll('input, select').forEach(el => el.classList.remove('invalid'));
       
       if (!name.value.trim()) {
-        document.getElementById('err-name').style.display = 'block';
+        const errName = document.getElementById('err-wa-name');
+        if (errName) errName.style.display = 'block';
         name.classList.add('invalid');
         isValid = false;
       }
       
-      const phoneRegex = /^[6-9]\d{9}$/; // 10 digits Indian numbers check
-      if (!phone.value.trim() || !phoneRegex.test(phone.value.replace(/\s+/g, ''))) {
-        document.getElementById('err-phone').style.display = 'block';
-        phone.classList.add('invalid');
-        isValid = false;
-      }
-      
-      if (email.value.trim()) {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email.value)) {
-          document.getElementById('err-email').style.display = 'block';
-          email.classList.add('invalid');
-          isValid = false;
-        }
-      }
-      
       if (!service.value) {
-        document.getElementById('err-service').style.display = 'block';
+        const errService = document.getElementById('err-wa-service');
+        if (errService) errService.style.display = 'block';
         service.classList.add('invalid');
         isValid = false;
       }
       
-      if (!date.value) {
-        document.getElementById('err-date').style.display = 'block';
-        date.classList.add('invalid');
-        isValid = false;
-      }
-      
-      if (!time.value) {
-        document.getElementById('err-time').style.display = 'block';
-        time.classList.add('invalid');
-        isValid = false;
-      }
-      
-      if (!terms.checked) {
-        document.getElementById('err-terms').style.display = 'block';
-        isValid = false;
-      }
-      
       if (isValid) {
-        // Submit processing status change
-        const submitBtn = bookingForm.querySelector('.btn-submit');
-        const btnText = submitBtn.querySelector('.btn-text');
-        const spinner = submitBtn.querySelector('.spinner');
+        // Construct custom WhatsApp message
+        let textMessage = `Hello Bliss Physiotherapy, I would like to book an appointment.\n\n`;
+        textMessage += `*Patient Name:* ${name.value.trim()}\n`;
+        textMessage += `*Specialty:* ${service.value}\n`;
+        textMessage += `*Preferred Therapist:* ${doctor.value}\n`;
+        if (notes.value.trim()) {
+          textMessage += `*Symptoms/Notes:* ${notes.value.trim()}\n`;
+        }
         
-        submitBtn.disabled = true;
-        btnText.classList.add('hidden');
-        spinner.classList.remove('hidden');
+        const encodedText = encodeURIComponent(textMessage);
+        const whatsappUrl = `https://wa.me/917828064351?text=${encodedText}`;
         
-        // Mock API call timer
-        setTimeout(() => {
-          // Re-enable submit button elements
-          submitBtn.disabled = false;
-          btnText.classList.remove('hidden');
-          spinner.classList.add('hidden');
-          
-          // Populate success screen details
-          document.getElementById('summary-name').textContent = name.value;
-          
-          // Date formatting for human readability
-          const dateObj = new Date(date.value);
-          const formattedDate = dateObj.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
-          const selectedTimeText = time.options[time.selectedIndex].text;
-          document.getElementById('summary-datetime').textContent = `${formattedDate} | ${selectedTimeText}`;
-          
-          // Doctor text mapping
-          const docVal = document.getElementById('physio-doctor').value;
-          let docName = "First Available Therapist";
-          if (docVal === 'dr-richa') docName = "Dr. Richa Sharma (PT)";
-          if (docVal === 'dr-amit') docName = "Dr. Amit Verma (PT)";
-          document.getElementById('summary-doctor').textContent = docName;
-          
-          // Generate unique ID
-          const randomId = Math.floor(1000 + Math.random() * 9000);
-          document.getElementById('summary-id').textContent = `BLISS-${randomId}-PT`;
-          
-          // Hide form layout, show success overlay
-          bookingForm.classList.add('hidden');
-          bookingSuccessView.classList.remove('hidden');
-        }, 1500);
+        // Open WhatsApp in new tab
+        window.open(whatsappUrl, '_blank');
       }
-    });
-  }
-  
-  // Book another session click handling
-  const newBookingBtn = document.getElementById('new-booking-btn');
-  if (newBookingBtn) {
-    newBookingBtn.addEventListener('click', () => {
-      bookingForm.reset();
-      bookingSuccessView.classList.add('hidden');
-      bookingForm.classList.remove('hidden');
     });
   }
 
-  // Mock Calendar Save
-  const calendarBtn = document.getElementById('calendar-btn');
-  if (calendarBtn) {
-    calendarBtn.addEventListener('click', () => {
-      alert("Appointment added successfully! Check your device calendar syncing.");
+  // --- 6b. Pre-populate Booking Form from CTAs ---
+  const bookingLinks = document.querySelectorAll('a[href="#book-appointment"]');
+  bookingLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      const serviceVal = link.getAttribute('data-service');
+      const doctorVal = link.getAttribute('data-doctor');
+      
+      if (serviceVal) {
+        const serviceSelect = document.getElementById('wa-physio-service');
+        if (serviceSelect) {
+          serviceSelect.value = serviceVal;
+        }
+      }
+      
+      if (doctorVal) {
+        const doctorSelect = document.getElementById('wa-physio-doctor');
+        if (doctorSelect) {
+          doctorSelect.value = doctorVal;
+        }
+      }
     });
-  }
+  });
 
   // --- 7. Patient Portal Resource Switching (Blog / Exercises / FAQ) ---
   const resourceToggleBtns = document.querySelectorAll('.resource-toggle-btn');
